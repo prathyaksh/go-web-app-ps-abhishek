@@ -1,0 +1,31 @@
+Docker file: 
+A typical docker file consists of these steps
+
+1) creation of base docker image. this typically depends on what programming language are you using to build the app.
+
+FROM golang:1.21 as base
+
+2) setting up working directory in container image i.e., in which folder your app file is placed in image created above.
+
+WORKDIR /APP
+
+3) Copying go.mod and go.sum files to the working directory. this changes from programme to programme.
+
+COPY go.mod ./
+
+4) in go.mod file you speccify few dependencies. they must be downloaded onto the image.
+
+Run go mod download.
+
+5) once the dependencies are upto date now you copy your source code to working directory.
+
+COPY ..
+
+6) build the app from source code and put it in the same directory you are currently in.
+RUN go build -o main .
+
+
+
+These are typical steps in creating a Docker file. to decrease the size of the docker image you can use multi stage builds and distroless/base
+
+FROM gcr.io/distroless/base
