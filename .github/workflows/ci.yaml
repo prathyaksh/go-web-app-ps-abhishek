@@ -1,12 +1,12 @@
-name : CI
+name: CI
   on:
-    push :
+    push:
       branches:
-        -main
+        - main
       paths-ignore:
-        -'README.md'
-        -'Learning.txt'
-        -'helm/**'
+        - 'README.md'
+        - 'Learning.txt'
+        - 'helm/**'
   
   jobs:
 
