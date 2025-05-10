@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: go-web-app-ps-abhishek
-        image: prathyaksh321/go-web-app-ps-abhishek:v1
+        image: prathyaksh321/go-web-app-ps-abhishek:{{.values.image.tag}}
         ports:
         - containerPort: 8080
