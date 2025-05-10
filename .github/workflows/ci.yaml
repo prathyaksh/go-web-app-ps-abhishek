@@ -1,5 +1,5 @@
 name: CI
-  on:
+on:
     push:
       branches:
         - main
@@ -8,7 +8,7 @@ name: CI
         - 'Learning.txt'
         - 'helm/**'
   
-  jobs:
+jobs:
 
   build:
     runs-on: ubuntu-latest
