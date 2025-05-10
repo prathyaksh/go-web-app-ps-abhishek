@@ -26,6 +26,36 @@ RUN go build -o main .
 
 
 
-These are typical steps in creating a Docker file. to decrease the size of the docker image you can use multi stage builds and distroless/base
+These are typical steps in creating a Docker file.
+
+7) to decrease the size of the docker image you can use multi stage builds and distroless/base
 
 FROM gcr.io/distroless/base
+
+8)Copy rest of the source files from base image
+
+COPY --FROM = base /app/main .
+copy --FROM = base /app.static ./static
+
+9) you expose the docker port
+EXPOSE 8080
+
+10) command to start execution of the app that is built. 
+CMD["./main"]
+
+
+This is the most of the docker file. for multiple environments you add multiple stages. 
+
+--> To build the docker image using the peovided dockerfile
+docker build -t prathyaksh321(docker ID)/go-web-app-ps-abhishek(name of the image):v1(version)
+
+--> to connect the port of system to docker port
+docker run -p 8080:8080 -it prathyaksh321/go-web-app-ps-abhishek:v1
+
+
+Kubernetes:
+
+manifests --> deployment.yaml --> go through google (Kubernetes deployment) to understands the fields
+		  --> service.yaml --> go through google(Kubernetes service) to understands the fields
+		  -->ingress.yaml --> go through google(Kubernetes ingress) to understands the fields
+
